@@ -1,0 +1,29 @@
+{% extends 'accounts/base.html' %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block main %}
+  <h1>Login</h1>
+  <form action="{% url account_login %}" method="post">
+    {{ render_field(form.username) }}
+    {{ render_field(form.password) }}
+    <p class="buttons">
+      <input type="submit" value="Login" />
+    </p>
+  </form>
+{% endblock main %}
+
+{% block sidebar %}
+  <div class="widget">
+    <p>
+      Don't have an account?
+      <br />
+      <a href="{% url account_create %}">Create an account</a>
+    </p>
+	
+    <p>
+      Forgot your password? <small>(shame on you!)</small>
+      <br />
+      <A href="{% url account_reset_password %}">Reset your password</a>
+    </p>
+  </div>
+{% endblock %}

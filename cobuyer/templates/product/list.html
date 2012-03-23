@@ -1,0 +1,74 @@
+{% extends 'product/base.html' %}
+{% from "_formhelpers.html" import render_field %}
+{% load pagination %}
+{% block page_js %}
+  <script type="text/javascript">
+    $(document).ready(function()
+    {
+      $('tbody tr:even').addClass('odd');
+      $('tbody tr:odd').addClass('even');
+    });
+  </script>
+{% endblock page_js %}
+
+{% block content %}
+  <h1>Product Search</h1>
+	
+  <form action="{% url product_search %}" method="post" class="horizontal">
+    {{ render_field(form.item_number) }}
+    {{ render_field(form.brand) }}
+    {{ render_field(form.description) }}
+    {{ render_field(form.category) }}
+    <p class="buttons">
+      <input type="submit" value="Search" />
+    </p>
+  </form>
+  <br style="clear: both;" />
+  
+  <h1>
+    Product List
+    {% if category %}
+    : {{ category.label }}
+    {% endif %}
+  </h1>
+  
+  {#{{ pagination(products, curpage) }}#}
+  
+  <table width="100%">
+    <thead>
+      <tr>
+	<th>Stock #</td>
+        <th>Brand</td>
+        <th>Item Description</td>
+        <th>Size</td>
+        <th>Price</td>
+        <th>Ext</td>
+        <th>Sale</td>
+        <th>Ext</td>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prod in products.object_list %}
+      <tr>
+	<td>{{ prod.item_number }}</td>
+	<td>{{ prod.brand }}</td>
+	<td>{{ prod.description }}</td>
+	<td>{{ prod.size }}</td>
+	<td align="right">{{ prod.unit_price }}</td>
+	<td align="right">{{ prod.total_price }}</td>
+	<td align="right">{{ prod.unit_sale_price|default("") }}</td>
+	<td align="right">{{ prod.total_sale_price|default("") }}</td>
+	<td align="center">
+	  <form action="{% url cart_add prod.pk %}" method="post">
+	    {{ form_add.quantity }}
+	    <input class="button" type="submit" value="Add" />
+          </form>
+	</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+	
+  {#{{ pagination(products, curpage) }}#}
+{% endblock content %}

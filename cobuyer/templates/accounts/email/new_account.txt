@@ -1,0 +1,12 @@
+An account has been created. You can now create an order for CoBuyer.
+
+You can log in {% url account_login %} with;
+
+username: {{ user.username }}
+password: {{ data.password }}
+
+If this is in error, please contact me.
+
+Thanks,
+Greg Reinbach
+greg@reinbach.com

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <title>{% block title %}{% endblock %} : CoBuyer : Reinbach</title>
+   
+    <link rel="icon" href="http://www.reinbach.com/media/images/favicon.ico">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css" type="text/css" />
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.3.1.min.js"></script>
+    {% block page_js %}{% endblock page_js%}
+</head>
+<body>
+
+<div id="container">
+	<div id="top">
+		<div id="header">
+			<div class="col-full">
+				<div id="logo">
+					<a href="{% url home %}">
+						<img src="{{ STATIC_URL }}images/logo.png" height="70" width="70" border="0" align="absbottom" />
+						CoBuyer
+					</a>
+				</div>
+				<ul id="menu">
+					<li id="menu-home"><a href="{% url home %}">Home</a></li>
+					<li id="menu-news"><a href="{% url news_home %}">News</a></li>
+					<li id="menu-products"><a href="{% url product_list %}">Products</a></li>
+					<li id="menu-cart"><a href="{% url cart_home %}">Shopping Cart</a></li>
+					<li id="menu-account"><a href="{% url account_home %}">My Account</a></li>
+				</ul>
+				<br style="clear: both" />
+			</div>
+		</div>
+		<div id="heading">
+			<div id="page-title" class="col-full">
+				{% block heading %}Home{% endblock heading %}
+			</div>
+		</div>
+		<div id="breadcrumb">
+			<div class="col-full">
+				<div style="float: left;">
+					You are here: {% block breadcrumb %}{% endblock breadcrumb %}
+				</div>
+				<div style="float: right;">
+				    <a href="/feeds/news/">
+					    <img class="rss" src="{{ STATIC_URL }}images/ico-rss.png" />
+					</a>
+				</div>
+				<div style="float: right;">
+					{% if user.is_authenticated() %}
+						Hello, 
+						{% if user.first_name %}
+							{{ user.first_name }} {{ user.last_name }}
+						{% else %}
+							{{ user }}
+						{% endif %}
+						|
+						<a href="{% url account_logout %}">Logout</a>
+					{% else %}
+						Not logged in
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="content">
+		<div class="col-full">
+			{% block message %}
+				{% if messages %}
+					<ul class="errorlist">
+						{% for message in messages %}
+							<li>{{ message }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endblock message %}
+			{% block content %}
+				<div id="main" class="col-left">
+					{% block main %}{% endblock main %}
+				</div>
+				<div id="sidebar" class="col-right">
+					{% block sidebar %}{% endblock sidebar %}
+				</div>
+			{% endblock content %}
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div class="col-full">
+			<div id="footer-widgets">
+			</div>
+			<div id="footer-credits">
+				<div id="copyright" class="col-left">
+					<p>&copy; 2012 reinbach All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
+		<br style="clear: both;" />
+	</div>
+</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16428972-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

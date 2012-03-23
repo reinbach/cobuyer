@@ -1,0 +1,41 @@
+{% extends 'accounts/base.html' %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block main %}
+  <h1>Create Account</h1>
+	
+  <form action="" method="post">
+    {{ render_field(form.first_name) }}
+    {{ render_field(form.last_name) }}
+    {{ render_field(form.number) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.username) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.password_confirm) }}
+    <p class="buttons">
+      <input type="submit" value="Create Account" />
+    </p>
+  </form>
+{% endblock main %}
+
+{% block sidebar %}
+  <div class="widget">
+    <h3>Helpful Tips</h3>
+	
+    <p>
+      Once you have an account you will be able to do the following;
+    </p>
+    
+    <ul>
+      <li>
+	You will be able to group your account with others. This allows your group to place <u>one</u> order, instead of many.
+	<br />
+	<br />
+      </li>
+      <li>
+	You can set yourself as the group leader. You get to place the order for your group.
+	<br />
+      </li>
+    </ul>
+  </div>
+{% endblock %}

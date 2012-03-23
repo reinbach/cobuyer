@@ -1,0 +1,354 @@
+body
+{
+    background-color: #fff;
+    color: #333;
+    font-family: "Myriad Pro", "Trebuchet MS", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+    font-size: 14px;
+    font-size-adjust: none;
+    font-stretch: none;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+#top 
+{
+    background: transparent url('../images/top_bg.jpg') repeat-x scroll center top;
+    min-height: 0;
+}
+
+#header 
+{
+    padding: 10px 0;
+    background: transparent url('../images/banner_background.png') repeat scroll 0 0;
+    clear: both;
+    position: relative;
+    z-index: 10;
+}
+
+#logo
+{
+    float: left;
+}
+
+#logo a
+{
+    color: #fff;
+    font-size: 45px;
+}
+
+ul#menu
+{
+    margin-top: 9px;
+    float: right;
+}
+
+#menu, #menu ul
+{
+    line-height: 1px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+}
+
+#menu li
+{
+    float: left;
+    padding: 2px 5px;
+    width: auto;
+}
+
+#menu a, #page-title
+{
+    text-shadow: 1px 2px 0 #000;
+}
+
+#menu a
+{
+    color: #fff;
+    display: block;
+    font-size: 17px;
+    line-height: 28px;
+    padding: 0 10px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+#menu li:hover, #menu li.current_page
+{
+    background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+}
+
+#heading
+{
+    background: transparent url('../images/bg-top-border.png') repeat-x scroll left top;
+}
+
+#heading #page-title
+{
+    padding: 25px 0;
+    font-size: 40px;
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 40px;
+}
+
+#breadcrumb
+{
+    background: #eee url('../images/bg-breadcrumb-top.png') repeat-x scroll center top;
+    border-bottom: 1px solid #D5D5D5;
+    border-top: 1px solid #efefef;
+    color: #777;
+    height: 44px;
+    line-height: 44px;
+}
+
+#breadcrumb img.rss
+{
+    margin: 9px 0 0 10px;
+    position: relative;
+}
+
+#content
+{
+    background: transparent url('../images/bg-content-top.png') repeat-x scroll center top;
+    min-height: 400px;
+    padding: 30px 0;
+}
+
+#main
+{
+    width: 620px;
+}
+
+#sidebar
+{
+    background: #f7f7f7 none repeat scroll 0 0;
+    border-bottom: 1px solid #dbdbdb;
+    overflow: hidden;
+    padding: 25px 25px 15px;
+    width: 260px;
+}
+
+#sidebar ul li
+{
+    background: transparent url('../images/ico-bullet.png') no-repeat scroll left 8px;
+    padding-left: 15px;
+}
+
+#footer
+{
+   background: #232323 url('../images/bg-footer-top.png') repeat-x scroll center top;
+   border-top: 1px solid #eee;
+   font-size: 12px;
+   padding: 20px 0;
+   margin-top: 20px;
+   clear: both;
+}
+
+#footer #footer-widgets
+{
+    color: #bbb;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+#footer #footer-credits
+{
+    background: transparent url('../images/bg-footer-bevel.png') repeat-x scroll center top;
+    margin: 20px 0;
+    padding: 25px 0 20px;
+    color: #777;
+}
+
+.col-full
+{
+    margin: 0 auto;
+    width: 960px;
+}
+
+.col-left
+{
+    float: left;
+}
+
+.col-right
+{
+    float: right;
+}
+
+a:link, a:visited
+{
+    color: #BF7622;
+    text-decoration: none;
+}
+
+code
+{
+    border-bottom: 1px solid #dbdbdb;
+    padding: 25px 25px 15px;
+    font-size: 90%;
+    background-color: #f7f7f7;
+    display: block;
+    overflow: auto;
+}
+
+#blog .title
+{
+    margin: 0 0 5px;
+    position: relative;
+}
+
+.blog-meta
+{
+    color: #9f9f9f;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    margin: 0 0 15px;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    color: #333;
+    margin: 0;
+}
+
+h1
+{
+    font-size: 30px;
+}
+
+h3
+{
+    color: #777;
+    font-size: 14px;
+    margin: 0 0 15px;
+    text-transform: uppercase;
+}
+
+ol, ul
+{
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.widget
+{
+    margin: 0 0 30px;
+}
+
+.widget ul li a
+{
+    color: #666;
+    line-height: 18px;
+    padding: 3px 0;
+    text-decoration: none;
+}
+
+.widget ul li a:hover
+{
+    color: #000;
+}
+
+.errorlist
+{
+    color: #ff0000;
+}
+
+/* form styling */
+form label { 
+    display: block; 
+    padding-bottom: 5px; 
+    font-size: 120%; 
+    color: #777 ;
+}
+
+form input, form textarea, form select { 
+    border-color: #7C7C7C #C3C3C3 #DDDDDD; 
+    border-style: solid; 
+    border-width: 1px; 
+    background-color: #fff; 
+    color: #000; 
+    font-size: 120%; 
+    padding: 3px;
+}
+
+form .buttons input, .button
+{
+    background: #eee url('../images/bg-breadcrumb-top.png') repeat-x scroll center top;
+    border-bottom: 1px solid #D5D5D5;
+    border-top: 1px solid #efefef;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3px 7px;
+}
+
+form.horizontal p
+{
+    float: left;
+    padding-right: 20px;
+}
+
+form.horizontal p.buttons
+{
+    clear: both;
+    margin: 0 0 30px 0;
+}
+
+form.horizontal #id_item_number
+{
+    width: 120px;
+}
+
+form.horizontal #id_brand, form.horizontal #id_description
+{
+    width: 180px;
+}
+
+/* table styling */
+table 
+{
+    border-collapse: collapse;
+}
+
+table thead
+{
+    background: #eee url('../images/bg-breadcrumb-top.png') repeat-x scroll center top;
+}
+
+th, td 
+{
+    border: 1px solid #ccc;
+    padding: 3px 7px;
+}
+
+.even {
+    background-color: #f6f6f6;
+}
+
+.odd {
+    background-color: #fff;
+}
+
+.paging
+{
+    text-align: right;
+}
+
+.paging .active-paging
+{
+    color: #333;
+}
+
+tr.inactive
+{
+    background-color: #FFD7C7;
+}

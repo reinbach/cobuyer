@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block breadcrumb %}
+	<strong>Home</strong>
+{% endblock breadcrumb %}
+
+{% block main %}
+  <p>
+    This website is an attempt to help with getting your order ready to place with your local Food Co-op.
+  </p>
+	
+  <p>
+    The functionality is limited at first and depending on how relevant everyone finds it and there is a need I will add to the site's functionality.
+  </p>
+	
+  <p>
+    At the moment I take the spreadsheet provided by the Food Co-op and load it. You can browse the products and then add them to your Shopping Cart. You will need to have created an account in order to use the Shopping Cart.
+  </p>
+{% endblock main %}
+
+{% block sidebar %}
+	<div class="widget">
+	    <h3>Getting Started</h3>
+	    <ul>
+	        <li>
+	            <strong>Step 1:</strong>
+	            <a href="{% url account_create %}">Create an account</a>
+	        </li>
+	        <li>
+	            <strong>Step 2:</strong>
+	            <a href="{% url product_search %}">Search Products</a>
+	        </li>
+	        <li>
+	            <strong>Step 3:</strong>
+	            <a href="{% url cart_home %}">Add Products to your Cart</a>
+	        </li>
+	        <li>
+	            <strong>Step 4:</strong>
+	            Place your order
+	        </li>
+	    </ul>
+	    
+	    <p>
+	        Depending on the relevance and usage of the site we (you and I) can grow the functionality.
+	    </p>
+	    
+	    <p>
+	        If you have any ideas <a href="mailto:greg@reinbach.com">contact me</a>
+	    </p>
+	</div>
+{% endblock sidebar %}

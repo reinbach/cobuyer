@@ -1,0 +1,12 @@
+syntax: glob
+# ignore backup files
+*~
+
+# emacs lock files
+.\#*
+
+# hidden directory
+.DS_Store
+
+# compiled python files
+*.pyc

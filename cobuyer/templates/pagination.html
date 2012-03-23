@@ -1,0 +1,27 @@
+<div class="paging">
+
+	<p>
+	{% if page.has_previous %}
+		<a class="paging-prev" href="?page={{ page.previous_page_number }}{{ tags }}">
+	{% endif %}
+	<span {% if not page.has_previous %}class="paging-prev-null"{% endif %}>
+			&laquo; Previous
+	</span>{% if page.has_previous %}</a>{% endif %}
+	
+	{% for num in page.page_range %}
+		{% if not num %}
+			...
+		{% else %}
+			<a href="?page={{ num }}{{ tags }}" {% ifequal curpage num %}class="active-paging"{% endifequal %}>{{ num }}</a>
+		{% endif %}
+	{% endfor %}
+	
+	{% if page.has_next %}
+		<a class="paging-next" href="?page={{ page.next_page_number }}{{ tags }}">
+	{% endif %}
+	<span {% if not page.has_next %}class="paging-next-null"{% endif %}>
+		Next &raquo;
+	</span>{% if page.has_next %}</a>{% endif %}
+	</p>
+
+</div>

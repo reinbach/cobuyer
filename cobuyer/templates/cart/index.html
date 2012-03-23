@@ -1,0 +1,100 @@
+{% extends 'cart/base.html' %}
+{% load pagination %}
+
+{% block main %}
+	<h1>
+		{% if cart.completed %}
+			Previous Order - {{ cart.modified|date:"m/d/Y" }}
+		{% else %}
+			Current Cart
+		{% endif %}
+	</h1>
+	
+	{{ form.quantity.errors }}
+	
+	{% pagination products curpage %}
+	
+	<table width="100%">
+		<thead>
+			<tr>
+				<th>Stock #</th>
+				<th>Brand</th>
+				<th>Item Description</th>
+				<th>Size</th>
+				<th>Qty</th>
+				<th>Price</th>
+				<th>Total</th>
+                {% if not cart.completed %}
+                    <th>Action</th>
+                {% endif %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for prod in products.object_list %}
+				<tr {% if not prod.product.active %}class="inactive"{% endif %}>
+					<td>{{ prod.product.item_number }}</td>
+					<td>{{ prod.product.brand }}</td>
+					<td>{{ prod.description }}</td>
+					<td>{{ prod.size }}</td>
+					<td align="center">{{ prod.quantity }}</td>
+					<td align="right">{{ prod.price|stringformat:".2f" }}</td>
+					<td align="right">{{ prod.total|stringformat:".2f" }}</td>
+                    {% if not cart.completed %}
+                        <td>
+                            <a href="{% url cart_delete prod.pk %}">Remove</a>
+                        </td>
+                    {% endif %}
+				</tr>
+			{% endfor %}
+		</tbody>
+		
+		{% if not products.has_next %}
+            <tr>
+                <td colspan="6" align="right">Sub Total:</td>
+                <td align="right">{{ cart.total|stringformat:".2f" }}</td>
+            </tr>
+            <tr>
+                <td colspan="6" align="right">Shipping Charge ({{ shipping_rate }}%):</td>
+                <td align="right">{{ cart.shipping_charge|stringformat:".2f" }}</td>
+            </tr>
+            <tr>
+                <td colspan="6" align="right">Sales Tax ({{ tax_rate }}%):</td>
+                <td align="right">{{ cart.tax|stringformat:".2f" }}</td>
+            </tr>
+            <tr>
+                <td colspan="6" align="right">Total:</td>
+                <td align="right">{{ cart.total_grand|stringformat:".2f" }}</td>
+            </tr>
+        {% endif %}
+	</table>
+	
+	{% pagination products curpage %}
+{% endblock main %}
+
+{% block sidebar %}
+	<div class="widget">
+		<h3>Helpful Tips</h3>
+
+		<p>
+			When you complete your order, don't forget to mark the order as complete. 
+		</p>
+		
+		<p>
+			This will allow you to start a new order and keep your orders separate. 
+		</p>
+		
+		<p>
+			Don't worry you will be able to view all your current and past orders.
+		</p>
+	</div>
+	
+	{% if not cart.completed %}
+    	<div class="widget">
+    	    <h3><a href="{% url cart_complete %}">Complete Order</a></h3>
+    	</div>
+	{% endif %}
+	
+	<div class="widget">
+	    <h3><a href="{% url cart_print cart.pk %}">Print Order</a></h3>
+	</div>
+{% endblock sidebar %}

@@ -1,0 +1,55 @@
+{% extends 'accounts/base.html' %}
+
+{% block main %}
+	<h1>Update Profile</h1>
+	
+	<form action="" method="post">
+		{{ form.non_field_errors }}
+		<p>
+			<label for="id_first_name">First Name:</label>
+			{{ form.first_name }}
+			{{ form.first_name.help_text }}
+			{{ form.first_name.errors }}
+		</p>
+		<p>
+			<label for="id_last_name">Last Name:</label>
+			{{ form.last_name }}
+			{{ form.last_name.help_text }}
+			{{ form.last_name.errors }}
+		</p>
+		<p>
+			<label for="id_number">Account #:</label>
+			{{ form.number }}
+			{{ form.number.help_text }}
+			{{ form.number.errors }}
+		</p>
+		<p>
+			<label for="id_email">Email:</label>
+			{{ form.email }}
+			{{ form.email.help_text }}
+			{{ form.email.errors }}
+		</p>
+		<p class="buttons">
+			<input type="submit" value="Update Profile" />
+			<a href="{% url account_home %}"><input type="button" value="Cancel" /></a>
+		</p>
+	</form>
+{% endblock main %}
+
+{% block sidebar %}
+	<div class="widget">
+		<h3>Helpful Tips</h3>
+	
+		<ul>
+			<li>
+				You are not able to change your username.
+				<br />
+				<br />
+			</li>
+			<li>
+				Do you want to be a group leader? Then you want to go <a href="">here</a>.
+				<br />
+			</li>
+		</ul>
+	</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "news/base.html" %}
+{% block main %}
+    {% for news in news_list %}
+        <div class="news-item">
+            <h2>{{ news.title }}</h2>
+            <div class="blog-meta">{{ news.created }}</div>
+            {{ news.body|linebreaks }}
+        </div>
+    {% else %}
+        No news....
+    {% endfor %}
+{% endblock main %}
+
+{% block sidebar %}
+    <div class="widget">
+        <p>
+            Letting you know of anything new with the site.
+        </p>
+        
+        <p>
+            Also informing you when the latest products have been uploaded to the site.
+        </p>
+    </div>
+{% endblock sidebar %}

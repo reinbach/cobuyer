@@ -1,0 +1,45 @@
+{% extends 'accounts/base.html' %}
+
+{% block main %}
+	<p>
+	    <h2><a href="{% url cart_home %}">Current Order</a></h2>
+	</p>
+	
+	<p>
+        <h2>Past Order(s)</h2>
+        <ul>
+            {% for order in past_orders %}
+                <li>
+                    <a href="{% url cart_view order.pk %}">
+                        {{ order.modified|date:"m/d/Y" }}
+                    </a>
+                    ${{ order.total }}
+                </li>
+            {% empty %}
+                <li>Currently you do not have any past orders</li>
+            {% endfor %}
+        </ul>
+	</p>
+{% endblock main %}
+
+{% block sidebar %}
+	<div class="widget">
+		<h3>Links</h3>
+		
+		<ul>
+			<li><a href="{% url account_update %}">Update Profile</a></li>
+			<li><a href="{% url account_password %}">Update Password</a></li>
+		</ul>
+	</div>
+	
+	<!-->
+	<div class="widget">
+		<h3>Group List</h3>
+		{% for group in profile.group.all %}
+			{{ group }}
+		{% empty %}
+			You are not part of any group. Would you like to <a href="">join a group</a>?
+		{% endfor %}
+	</div>
+	//-->
+{% endblock sidebar %}
